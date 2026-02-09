@@ -1,15 +1,102 @@
-Source: template-repository
-Section: unknown
+Source: kf6-kfilemetadata
+Section: kde
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Aurélien COUDERC <coucouf@debian.org>,
+           Patrick Franz <deltaone@debian.org>,
+Build-Depends: cmake (>= 3.16~),
+               debhelper-compat (= 13),
+               dh-sequence-kf6,
+               dh-sequence-pkgkde-symbolshelper,
+               doxygen,
+               extra-cmake-modules (>= 6.6.0~),
+               libappimage-dev (>= 0.1.10~) [linux-any],
+               libattr1-dev,
+               libavcodec-dev (>= 7:3.1~),
+               libavdevice-dev (>= 3.1~),
+               libavformat-dev (>= 7:3.1~),
+               libavutil-dev,
+               libepub-dev,
+               libexiv2-dev (>= 0.26~),
+               libkf6archive-dev (>= 6.6.0~),
+               libkf6codecs-dev (>= 6.6.0~),
+               libkf6config-dev (>= 6.6.0~),
+               libkf6coreaddons-dev (>= 6.6.0~),
+               libkf6i18n-dev (>= 6.6.0~),
+               libpoppler-qt6-dev (>= 0.12.1) [amd64 arm64 armel armhf mips64el ppc64el riscv64 s390x alpha hppa hurd-any m68k powerpc ppc64 sh4 sparc64],
+               libpostproc-dev,
+               libqmobipocket6-dev (>= 4:2.1~),
+               libswscale-dev (>= 7:3.1~),
+               libtag1-dev (>= 1.12~),
+               libxkbcommon-dev,
+               pkgconf,
+               python3:any,
+               qt6-base-dev (>= 6.5.0+dfsg~),
+               qt6-tools-dev (>= 6.5.0~),
+Standards-Version: 4.7.0
+Homepage: https://invent.kde.org/frameworks/kfilemetadata
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/kde/kf6-kfilemetadata
+Vcs-Git: https://salsa.debian.org/qt-kde-team/kde/kf6-kfilemetadata.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libkf6filemetadata-bin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Recommends: catdoc,
+Multi-Arch: same
+Description: library for extracting file metadata
+ This library is for extracting file metadata.
+ .
+ kfilemetadata is part of the KDE frameworks.
+ .
+ This package contains the file type plugins.
+
+Package: libkf6filemetadata-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: library for extracting file metadata
+ This library is for extracting file metadata.
+ .
+ kfilemetadata is part of the KDE frameworks.
+
+Package: libkf6filemetadata-dev
+Section: libdevel
+Architecture: any
+Depends: libkf6filemetadata3 (= ${binary:Version}),
+         qt6-base-dev (>= 6.5.0+dfsg~),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6filemetadata-doc (= ${source:Version}),
+Multi-Arch: same
+Description: library for extracting file metadata
+ This library is for extracting file metadata.
+ .
+ kfilemetadata is part of the KDE frameworks.
+ .
+ This package contains the development files.
+
+Package: libkf6filemetadata-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: library for extracting file metadata (documentation)
+ This library is for extracting file metadata.
+ .
+ kfilemetadata is part of the KDE Plasma desktop.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf6filemetadata3
+Section: libs
+Architecture: any
+Depends: libkf6filemetadata-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Multi-Arch: same
+Recommends: libkf6filemetadata-bin (= ${binary:Version}),
+Description: library for extracting file metadata
+ This library is for extracting file metadata.
+ .
+ kfilemetadata is part of the KDE frameworks.
