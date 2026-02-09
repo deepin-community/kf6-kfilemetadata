@@ -1,0 +1,3 @@
+usr/include/KF6/KFileMetaData/
+usr/lib/*/cmake/KF6FileMetaData/
+usr/lib/*/libKF6FileMetaData.so
